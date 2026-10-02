@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>مراحل الحفظ</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap">
+<style>
+:root{--bg:#f6f3ec;--card:#fff;--ink:#1d2b26;--mut:#6b7a73;--pri:#1f6b52;--pri2:#e3f1ea;--acc:#b9852c;--line:#e4dfd2;--warn:#c2410c;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101a16;--card:#18251f;--ink:#e8efe9;--mut:#93a39a;--pri:#4fb38c;--pri2:#1d3329;--acc:#e0aa4e;--line:#2a3a32;--warn:#fb923c}}
+:root[data-theme="dark"]{--bg:#101a16;--card:#18251f;--ink:#e8efe9;--mut:#93a39a;--pri:#4fb38c;--pri2:#1d3329;--acc:#e0aa4e;--line:#2a3a32;--warn:#fb923c}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Tajawal,system-ui,sans-serif;padding-bottom:84px}
+header{padding:18px 16px 6px;max-width:640px;margin:auto}
+h1{margin:0;font-size:22px}header p{margin:2px 0 0;color:var(--mut);font-size:13px}
+main{max-width:640px;margin:auto;padding:10px 14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:10px}
+label{display:block;font-size:13px;color:var(--mut);margin:10px 0 4px}
+select,input{width:100%;padding:11px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit;font-size:16px}
+.row{display:flex;gap:10px}.row>*{flex:1}
+button{font:inherit;border:0;border-radius:10px;padding:10px 14px;cursor:pointer;background:var(--pri);color:#fff;font-weight:700}
+button.ghost{background:var(--pri2);color:var(--pri)}button:disabled{opacity:.45;cursor:default}
+.big{width:100%;margin-top:14px;padding:13px;font-size:16px}
+.bar{height:8px;background:var(--pri2);border-radius:6px;overflow:hidden;margin:8px 0}.bar i{display:block;height:100%;background:var(--pri)}
+.top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.t{font-weight:700}.m{font-size:12.5px;color:var(--mut)}
+.badge{font-size:12px;padding:3px 9px;border-radius:99px;background:var(--pri2);color:var(--pri)}.badge.d{background:#fde8d8;color:var(--warn)}
+.acts{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.empty{text-align:center;color:var(--mut);padding:30px 10px}
+nav{position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid var(--line);display:flex;padding-bottom:env(safe-area-inset-bottom,0px);z-index:5}
+nav button{flex:1;background:none;color:var(--mut);border-radius:0;padding:10px 2px;font-size:12px;font-weight:500;position:relative}
+nav button.on{color:var(--pri);font-weight:700}nav button b{display:block;font-size:19px}
+nav button em{position:absolute;top:4px;inset-inline-start:50%;margin-inline-start:6px;background:var(--acc);color:#fff;font-style:normal;font-size:10px;border-radius:9px;padding:0 5px}
+#toast{position:fixed;bottom:84px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:14px;opacity:0;transition:.25s;pointer-events:none;max-width:90%;text-align:center;z-index:9}
+#toast.s{opacity:1}
+.flow{display:flex;gap:4px;font-size:12px;color:var(--mut);flex-wrap:wrap;align-items:center;margin-top:6px}
+</style>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1f6b52">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="مراحل الحفظ">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+</head>
+<body>
+<header><h1>📖 مراحل الحفظ</h1><p>حفظ ← تثبيت ← مراجعة قريبة ← مراجعة أسبوعية</p></header>
+<main id="app"></main>
+<div id="toast"></div>
+<nav id="nav"></nav>
+<script>
+const SD="الفاتحة:7,البقرة:286,آل عمران:200,النساء:176,المائدة:120,الأنعام:165,الأعراف:206,الأنفال:75,التوبة:129,يونس:109,هود:123,يوسف:111,الرعد:43,إبراهيم:52,الحجر:99,النحل:128,الإسراء:111,الكهف:110,مريم:98,طه:135,الأنبياء:112,الحج:78,المؤمنون:118,النور:64,الفرقان:77,الشعراء:227,النمل:93,القصص:88,العنكبوت:69,الروم:60,لقمان:34,السجدة:30,الأحزاب:73,سبأ:54,فاطر:45,يس:83,الصافات:182,ص:88,الزمر:75,غافر:85,فصلت:54,الشورى:53,الزخرف:89,الدخان:59,الجاثية:37,الأحقاف:35,محمد:38,الفتح:29,الحجرات:18,ق:45,الذاريات:60,الطور:49,النجم:62,القمر:55,الرحمن:78,الواقعة:96,الحديد:29,المجادلة:22,الحشر:24,الممتحنة:13,الصف:14,الجمعة:11,المنافقون:11,التغابن:18,الطلاق:12,التحريم:12,الملك:30,القلم:52,الحاقة:52,المعارج:44,نوح:28,الجن:28,المزمل:20,المدثر:56,القيامة:40,الإنسان:31,المرسلات:50,النبأ:40,النازعات:46,عبس:42,التكوير:29,الانفطار:19,المطففين:36,الانشقاق:25,البروج:22,الطارق:17,الأعلى:19,الغاشية:26,الفجر:30,البلد:20,الشمس:15,الليل:21,الضحى:11,الشرح:8,التين:8,العلق:19,القدر:5,البينة:8,الزلزلة:8,العاديات:11,القارعة:11,التكاثر:8,العصر:3,الهمزة:9,الفيل:5,قريش:4,الماعون:7,الكوثر:3,الكافرون:6,النصر:3,المسد:5,الإخلاص:4,الفلق:5,الناس:6".split(",").map(x=>{const[a,b]=x.split(":");return[a,+b]});
+const KEY="hifz-pipeline-v1";
+let st={items:[],w:{},tab:"new",sel:0};
+try{const r=localStorage.getItem(KEY);if(r){const o=JSON.parse(r);st.items=o.items||[];st.w=o.w||{};}}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify({items:st.items,w:st.w}))}catch(e){}};
+const today=()=>{const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")};
+const days=d=>d?Math.floor((new Date(today())-new Date(d))/864e5):null;
+const $=s=>document.querySelector(s);
+const nm=i=>SD[i][0];
+const rng=it=>it.a===it.b?`آية ${it.a}`:`الآيات ${it.a} – ${it.b}`;
+function toast(t){const e=$("#toast");e.textContent=t;e.className="s";clearTimeout(toast.t);toast.t=setTimeout(()=>e.className="",2600)}
+function covered(s){const set=new Set();st.items.filter(i=>i.s===s).forEach(i=>{for(let k=i.a;k<=i.b;k++)set.add(k)});return set}
+function nextFree(s){const c=covered(s);for(let k=1;k<=SD[s][1];k++)if(!c.has(k))return k;return null}
+function checkComplete(s){
+ const its=st.items.filter(i=>i.s===s);
+ if(!its.length||its.some(i=>i.stage==="tathbit")||covered(s).size<SD[s][1])return;
+ const near=its.filter(i=>i.stage==="near");
+ if(near.length){near.forEach(i=>i.stage="weekly");st.w[s]=st.w[s]||{last:null,since:today()};toast(`🎉 اكتملت سورة ${nm(s)} وانتقلت إلى المراجعة الأسبوعية`)}
+}
+function add(){
+ const s=+$("#s").value,a=+$("#a").value,b=+$("#b").value,n=SD[s][1];
+ if(!a||!b||a<1||b>n||a>b)return toast(`أدخل مقداراً صحيحاً بين 1 و ${n}`);
+ const c=covered(s);for(let k=a;k<=b;k++)if(c.has(k))return toast(`الآية ${k} مسجّلة سابقاً`);
+ st.items.push({id:Date.now(),s,a,b,stage:"tathbit",date:today(),reps:0,lastRev:null,revs:0});
+ save();toast("✅ سُجّلت جلسة الحفظ وانتقل المقدار إلى التثبيت");st.sel=s;render()
+}
+const find=id=>st.items.find(i=>i.id===id);
+function rep(id){const i=find(id);i.reps++;save();render()}
+function doneT(id){const i=find(id);i.stage="near";i.tdate=today();save();toast("انتقل المقدار إلى المراجعة القريبة");checkComplete(i.s);save();render()}
+function revNear(id){const i=find(id);i.lastRev=today();i.revs++;save();render()}
+function finishNear(s){
+ const c=covered(s).size,n=SD[s][1];
+ if(c<n&&!confirm(`سورة ${nm(s)} لم يُسجَّل منها سوى ${c} من ${n} آية. هل تريد إنهاء المراجعة القريبة ونقلها إلى الأسبوعية؟`))return;
+ st.items.filter(i=>i.s===s&&i.stage==="near").forEach(i=>i.stage="weekly");
+ st.w[s]=st.w[s]||{last:null,since:today()};save();toast(`✔ انتقلت سورة ${nm(s)} إلى المراجعة الأسبوعية`);render()
+}
+function revW(s){st.w[s].last=today();save();toast(`تمت مراجعة سورة ${nm(s)}`);render()}
+function del(id){if(confirm("حذف هذا المقدار؟")){st.items=st.items.filter(i=>i.id!==id);save();render()}}
+function bar(p){return `<div class="bar"><i style="width:${p}%"></i></div>`}
+function vNew(){
+ const s=st.sel,n=SD[s][1],nx=nextFree(s),c=covered(s).size;
+ const opts=SD.map((x,i)=>`<option value="${i}" ${i===s?"selected":""}>${i+1}. ${x[0]}</option>`).join("");
+ const log=[...st.items].sort((x,y)=>y.id-x.id).slice(0,5).map(i=>`<div class="card"><div class="top"><span class="t">${nm(i.s)} · ${rng(i)}</span><span class="m">${i.date}</span></div></div>`).join("");
+ return `<div class="card"><label>السورة</label><select id="s">${opts}</select>
+ <div class="m" style="margin-top:8px">${c} من ${n} آية مسجّلة${nx?"":" — السورة مسجّلة بالكامل"}</div>${bar(Math.round(c/n*100))}
+ <div class="row"><div><label>من آية</label><input id="a" type="number" inputmode="numeric" min="1" max="${n}" value="${nx||""}"></div>
+ <div><label>إلى آية</label><input id="b" type="number" inputmode="numeric" min="1" max="${n}" value="${nx?Math.min(n,nx+4):""}"></div></div>
+ <button class="big" onclick="add()">✔ أنجزت الحفظ وسجّل الجلسة</button></div>
+ <h3 style="margin:16px 4px 8px;font-size:15px">آخر الجلسات</h3>${log||'<div class="empty">لا توجد جلسات بعد</div>'}`
+}
+function vT(){
+ const l=st.items.filter(i=>i.stage==="tathbit");
+ if(!l.length)return '<div class="empty">لا يوجد ما يحتاج تثبيتاً.<br>سجّل جلسة حفظ جديدة لتظهر هنا.</div>';
+ return l.map(i=>`<div class="card"><div class="top"><span class="t">${nm(i.s)} · ${rng(i)}</span><span class="badge">حُفظ ${i.date}</span></div>
+ <div class="m" style="margin-top:6px">عدد التكرارات: <b>${i.reps}</b></div>
+ <div class="acts"><button class="ghost" onclick="rep(${i.id})">＋ تكرار</button><button onclick="doneT(${i.id})">✔ أنجزت التثبيت</button><button class="ghost" onclick="del(${i.id})">🗑</button></div></div>`).join("")
+}
+function vN(){
+ const ss=[...new Set(st.items.filter(i=>i.stage==="near").map(i=>i.s))];
+ const pend=[...new Set(st.items.filter(i=>i.stage==="tathbit").map(i=>i.s))];
+ const all=[...new Set([...ss])];
+ if(!all.length)return '<div class="empty">لا توجد مقاطع في المراجعة القريبة.<br>تظهر هنا بعد إنجاز التثبيت.</div>';
+ return all.map(s=>{const c=covered(s).size,n=SD[s][1],its=st.items.filter(i=>i.s===s&&i.stage==="near");
+ return `<div class="card"><div class="top"><span class="t">سورة ${nm(s)}</span><span class="badge">${c}/${n} آية</span></div>${bar(Math.round(c/n*100))}
+ <div class="m">تنتقل إلى المراجعة الأسبوعية عند اكتمال السورة وتثبيت كل مقاطعها</div>
+ <div class="acts"><button onclick="finishNear(${s})">✔ أنجزت المراجعة القريبة للسورة</button></div>
+ ${its.map(i=>{const d=days(i.lastRev),ok=i.lastRev===today();return `<div style="border-top:1px solid var(--line);margin-top:10px;padding-top:10px"><div class="top"><span>${rng(i)}</span><span class="m">${i.lastRev?(ok?"روجع اليوم":`آخر مراجعة قبل ${d} يوم`):"لم تُراجع بعد"} · ${i.revs}×</span></div>
+ <div class="acts"><button ${ok?"disabled":""} onclick="revNear(${i.id})">${ok?"✔ تمت":"راجعت اليوم"}</button></div></div>`}).join("")}</div>`}).join("")
+}
+function vW(){
+ const ks=Object.keys(st.w).map(Number).sort((a,b)=>a-b);
+ if(!ks.length)return '<div class="empty">لا توجد سور مكتملة بعد.<br>عند اكتمال سورة تنتقل هنا للمراجعة الأسبوعية.</div>';
+ const due=ks.filter(s=>st.w[s].last===null||days(st.w[s].last)>=7);
+ return `<div class="card"><div class="t">ورد هذا الأسبوع</div><div class="m">${ks.length-due.length} من ${ks.length} سور رُوجعت خلال 7 أيام</div>${bar(Math.round((ks.length-due.length)/ks.length*100))}</div>`+
+ ks.map(s=>{const w=st.w[s],d=days(w.last),isD=w.last===null||d>=7;
+ return `<div class="card"><div class="top"><span class="t">سورة ${nm(s)}</span><span class="badge ${isD?"d":""}">${isD?"مستحقة":"مُراجَعة"}</span></div>
+ <div class="m" style="margin-top:6px">${w.last?`آخر مراجعة: ${w.last} (قبل ${d} يوم)`:"لم تُراجع بعد"} · ${SD[s][1]} آية</div>
+ <div class="acts"><button ${w.last===today()?"disabled":""} onclick="revW(${s})">${w.last===today()?"✔ تمت اليوم":"✔ أنجزت المراجعة الأسبوعية"}</button></div></div>`}).join("")
+}
+function render(){
+ const cnt={t:st.items.filter(i=>i.stage==="tathbit").length,n:st.items.filter(i=>i.stage==="near"&&i.lastRev!==today()).length,w:Object.keys(st.w).filter(s=>st.w[s].last===null||days(st.w[s].last)>=7).length};
+ const tabs=[["new","➕","حفظ جديد",0],["t","🧱","التثبيت",cnt.t],["n","🔁","المراجعة القريبة",cnt.n],["w","📅","الأسبوعية",cnt.w]];
+ $("#nav").innerHTML=tabs.map(t=>`<button class="${st.tab===t[0]?"on":""}" onclick="st.tab='${t[0]}';render();scrollTo(0,0)"><b>${t[1]}</b>${t[2]}${t[3]?`<em>${t[3]}</em>`:""}</button>`).join("");
+ $("#app").innerHTML={new:vNew,t:vT,n:vN,w:vW}[st.tab]();
+ const s=$("#s");if(s)s.onchange=()=>{st.sel=+s.value;render()}
+}
+render();
+</script>
+<script>if("serviceWorker" in navigator)addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));</script>
+</body>
+</html>
