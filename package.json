@@ -1,6 +1,6 @@
 {
-  "name": "hifz-pipeline-pwa",
-  "version": "4.0.0",
+  "name": "hifz-tracker",
+  "version": "4.1.0",
   "private": true,
   "type": "module",
   "dependencies": {

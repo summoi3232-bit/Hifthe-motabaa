@@ -1,87 +1,158 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>مراحل الحفظ</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap">
-<style>
-:root{--bg:#f6f3ec;--card:#fff;--ink:#1d2b26;--mut:#6b7a73;--pri:#1f6b52;--pri2:#e3f1ea;--acc:#b9852c;--line:#e4dfd2;--warn:#c2410c;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101a16;--card:#18251f;--ink:#e8efe9;--mut:#93a39a;--pri:#4fb38c;--pri2:#1d3329;--acc:#e0aa4e;--line:#2a3a32;--warn:#fb923c}}
-:root[data-theme="dark"]{--bg:#101a16;--card:#18251f;--ink:#e8efe9;--mut:#93a39a;--pri:#4fb38c;--pri2:#1d3329;--acc:#e0aa4e;--line:#2a3a32;--warn:#fb923c}
-*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Tajawal,system-ui,sans-serif;padding-bottom:84px}
-header{padding:18px 16px 6px;max-width:640px;margin:auto}
-h1{margin:0;font-size:22px}header p{margin:2px 0 0;color:var(--mut);font-size:13px}
-main{max-width:640px;margin:auto;padding:10px 14px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:10px}
-label{display:block;font-size:13px;color:var(--mut);margin:10px 0 4px}
-select,input{width:100%;padding:11px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit;font-size:16px}
-.row{display:flex;gap:10px}.row>*{flex:1}
-button{font:inherit;border:0;border-radius:10px;padding:10px 14px;cursor:pointer;background:var(--pri);color:#fff;font-weight:700}
-button.ghost{background:var(--pri2);color:var(--pri)}button:disabled{opacity:.45;cursor:default}
-.big{width:100%;margin-top:14px;padding:13px;font-size:16px}
-.bar{height:8px;background:var(--pri2);border-radius:6px;overflow:hidden;margin:8px 0}.bar i{display:block;height:100%;background:var(--pri)}
-.top{display:flex;justify-content:space-between;align-items:center;gap:8px}
-.t{font-weight:700}.m{font-size:12.5px;color:var(--mut)}
-.badge{font-size:12px;padding:3px 9px;border-radius:99px;background:var(--pri2);color:var(--pri)}.badge.d{background:#fde8d8;color:var(--warn)}
-.acts{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
-.empty{text-align:center;color:var(--mut);padding:30px 10px}
-nav{position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid var(--line);display:flex;padding-bottom:env(safe-area-inset-bottom,0px);z-index:5}
-nav button{flex:1;background:none;color:var(--mut);border-radius:0;padding:10px 2px;font-size:12px;font-weight:500;position:relative}
-nav button.on{color:var(--pri);font-weight:700}nav button b{display:block;font-size:19px}
-nav button em{position:absolute;top:4px;inset-inline-start:50%;margin-inline-start:6px;background:var(--acc);color:#fff;font-style:normal;font-size:10px;border-radius:9px;padding:0 5px}
-#toast{position:fixed;bottom:84px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:14px;opacity:0;transition:.25s;pointer-events:none;max-width:90%;text-align:center;z-index:9}
-#toast.s{opacity:1}
-.flow{display:flex;gap:4px;font-size:12px;color:var(--mut);flex-wrap:wrap;align-items:center;margin-top:6px}
-.card.warn{border-color:var(--warn)}.card.warn .t{color:var(--warn)}.tm b{font-size:28px;font-variant-numeric:tabular-nums}.tm select{width:auto}.cnt{font-size:24px;font-weight:700}p.m{line-height:1.8;margin:6px 0 0}
-</style>
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#1f6b52">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0F3D36">
+<meta name="description" content="متابعة الحفظ: حفظ عقلي ولساني، مراجعة متباعدة، ورد أسبوعي، وتنبيه الغفلة">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="مراحل الحفظ">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<link rel="icon" href="icon-192.png">
-<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-title" content="متابعة الحفظ">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<title>متابعة الحفظ</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F4F0E4;--card:#FFFDF7;--ink:#14302B;--mute:#566A64;--line:#DDD5BF;--teal:#14574D;--tealsoft:#DCEBE5;--gold:#B88A2A;--gt:#7A5A12;--goldsoft:#F3E7C6;--danger:#A3382F;--hd:#0F3D36;--hdink:#F7F1DD;--btn:#14574D;--btnink:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B1B18;--card:#12302A;--ink:#EDE8D6;--mute:#A5BBB4;--line:#24493F;--teal:#5FC0AB;--tealsoft:#17413A;--gold:#E2B85A;--gt:#E2B85A;--goldsoft:#3A3318;--danger:#F08F85;--hd:#071512;--hdink:#F2E9C9;--btn:#5FC0AB;--btnink:#0B1B18}}
+:root[data-theme="dark"]{--bg:#0B1B18;--card:#12302A;--ink:#EDE8D6;--mute:#A5BBB4;--line:#24493F;--teal:#5FC0AB;--tealsoft:#17413A;--gold:#E2B85A;--gt:#E2B85A;--goldsoft:#3A3318;--danger:#F08F85;--hd:#071512;--hdink:#F2E9C9;--btn:#5FC0AB;--btnink:#0B1B18}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.5 Tajawal,system-ui,sans-serif;padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}
+header{background:var(--hd);color:var(--hdink);border-bottom:4px solid var(--gold);padding:calc(env(safe-area-inset-top,0px) + 14px) 16px 14px}
+.in,main{max-width:640px;margin:0 auto}main{padding:12px 14px}
+h1{margin:0;font-family:Amiri,serif;font-size:30px;color:var(--gold)}
+header p{margin:0 0 10px;font-size:14px;opacity:.85}
+.st{display:flex;gap:8px}.st div{flex:1;background:rgba(255,255,255,.09);border-radius:12px;padding:8px 4px;text-align:center;font-size:13px}.st b{display:block;font-size:24px;color:var(--gold);line-height:1.2}
+h2{font-size:18px;margin:18px 2px 8px;color:var(--teal)}
+.card{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:14px;margin-bottom:12px}
+.card.warn{border-color:var(--danger)}.card.warn .t{color:var(--danger)}
+.top{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.t{font-family:Amiri,serif;font-weight:700;font-size:21px}
+.m{font-size:13.5px;color:var(--mute)}p.m{line-height:1.9;margin:6px 0 0;font-size:15px}
+.badge{font-size:13px;font-weight:700;padding:2px 10px;border-radius:99px;background:var(--tealsoft);color:var(--teal)}.badge.d{background:var(--goldsoft);color:var(--danger)}
+.ok{color:var(--teal);font-weight:700}
+.bar{height:10px;background:var(--tealsoft);border-radius:99px;overflow:hidden;margin:8px 0}.bar i{display:block;height:100%;background:var(--gold)}
+button{font:inherit;font-weight:700;border:0;border-radius:12px;padding:10px 14px;min-height:44px;cursor:pointer;background:var(--btn);color:var(--btnink)}
+button.ghost{background:transparent;border:1.5px solid var(--btn);color:var(--teal)}button:disabled{opacity:.45;cursor:default}
+.acts{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}.acts button{flex:1}
+.big{width:100%;margin-top:10px;font-size:16px}
+.sm{min-width:44px;padding:0;background:var(--card);color:var(--ink);border:1.5px solid var(--line);font-size:18px;margin-inline-start:6px}
+.lnk{background:none;border:0;color:var(--mute);font-size:13px;padding:0 4px;font-weight:500}
+.row{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:4px 0}
+.dots{display:flex;gap:6px}.dots i{width:14px;height:14px;border-radius:50%;border:2px solid var(--gold);display:block}.dots i.on{background:var(--gold)}
+.cnt{font-size:26px;font-weight:700}
+label{display:block;font-size:14px;color:var(--mute);margin:10px 0 4px}
+select,input,textarea{width:100%;min-height:44px;padding:9px 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit;font-size:16px}
+.two{display:flex;gap:10px}.two>div{flex:1}
+.empty{text-align:center;color:var(--mute);padding:28px 10px}
+.sep{border-top:1px solid var(--line);margin-top:10px;padding-top:10px}
+.tm b{font-size:28px;font-variant-numeric:tabular-nums}.tm select{width:auto}
+.flow{font-size:14px;color:var(--mute);margin-top:6px}
+nav{position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1.5px solid var(--line);display:flex;padding-bottom:env(safe-area-inset-bottom,0px);z-index:5}
+nav button{flex:1;background:none;color:var(--mute);border-radius:0;padding:8px 2px;font-size:12px;font-weight:500;position:relative}
+nav button.on{color:var(--teal);font-weight:700}nav button b{display:block;font-size:19px}
+nav button em{position:absolute;top:2px;inset-inline-start:50%;margin-inline-start:6px;background:var(--gold);color:#fff;font-style:normal;font-size:10px;border-radius:9px;padding:0 5px}
+#toast{position:fixed;bottom:calc(92px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:14px;opacity:0;transition:.25s;pointer-events:none;max-width:90%;text-align:center;z-index:9}#toast.s{opacity:1}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.acts.g4{gap:6px}.acts.g4 button{padding:8px 2px;font-size:14px;line-height:1.3}.acts.g4 small{display:block;font-size:11px;font-weight:500;opacity:.9}
+.fc{display:flex;gap:4px;margin-top:8px}.fc div{flex:1;text-align:center;background:var(--tealsoft);border-radius:10px;padding:6px 0;font-size:12px}.fc b{display:block;font-size:20px;color:var(--teal)}.fc span{color:var(--mute)}
+</style>
 </head>
 <body>
-<header><div class="top"><h1>📖 مراحل الحفظ</h1><button class="ghost" onclick="go('s')">⚙</button></div><p>حفظ ← تثبيت ← مراجعة قريبة ← مراجعة أسبوعية · <span id="hd"></span></p></header>
+<header><div class="in"><div class="top"><h1>متابعة الحفظ</h1><button class="ghost" style="color:var(--gold);border-color:var(--gold)" onclick="go('s')" aria-label="الإعدادات">⚙</button></div><p>حفظ ← تثبيت ← مراجعة ← ورد · <span id="hd"></span></p><div class="st" id="hs"></div></div></header>
 <main id="app"></main>
 <div id="toast"></div>
 <nav id="nav"></nav>
 <script>
 const SD="الفاتحة:7,البقرة:286,آل عمران:200,النساء:176,المائدة:120,الأنعام:165,الأعراف:206,الأنفال:75,التوبة:129,يونس:109,هود:123,يوسف:111,الرعد:43,إبراهيم:52,الحجر:99,النحل:128,الإسراء:111,الكهف:110,مريم:98,طه:135,الأنبياء:112,الحج:78,المؤمنون:118,النور:64,الفرقان:77,الشعراء:227,النمل:93,القصص:88,العنكبوت:69,الروم:60,لقمان:34,السجدة:30,الأحزاب:73,سبأ:54,فاطر:45,يس:83,الصافات:182,ص:88,الزمر:75,غافر:85,فصلت:54,الشورى:53,الزخرف:89,الدخان:59,الجاثية:37,الأحقاف:35,محمد:38,الفتح:29,الحجرات:18,ق:45,الذاريات:60,الطور:49,النجم:62,القمر:55,الرحمن:78,الواقعة:96,الحديد:29,المجادلة:22,الحشر:24,الممتحنة:13,الصف:14,الجمعة:11,المنافقون:11,التغابن:18,الطلاق:12,التحريم:12,الملك:30,القلم:52,الحاقة:52,المعارج:44,نوح:28,الجن:28,المزمل:20,المدثر:56,القيامة:40,الإنسان:31,المرسلات:50,النبأ:40,النازعات:46,عبس:42,التكوير:29,الانفطار:19,المطففين:36,الانشقاق:25,البروج:22,الطارق:17,الأعلى:19,الغاشية:26,الفجر:30,البلد:20,الشمس:15,الليل:21,الضحى:11,الشرح:8,التين:8,العلق:19,القدر:5,البينة:8,الزلزلة:8,العاديات:11,القارعة:11,التكاثر:8,العصر:3,الهمزة:9,الفيل:5,قريش:4,الماعون:7,الكوثر:3,الكافرون:6,النصر:3,المسد:5,الإخلاص:4,الفلق:5,الناس:6".split(",").map(x=>{const[a,b]=x.split(":");return[a,+b]});
-const KEY="hifz-pipeline-v1";
+const KEY="hifz-merged-v1",OLD=["hifz-pipeline-v1","hifz-plan-v1"];
 const WD=["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"];
-let st={items:[],w:{},tab:"new",sel:0,set:{tg:20,rm:false,hr:"18:00",ln:""},tm:{},ses:[],err:{},log:[]};
-try{const r=localStorage.getItem(KEY);if(r){const o=JSON.parse(r);st.items=o.items||[];st.w=o.w||{};st.set=Object.assign(st.set,o.set||{});st.tm=o.tm||{};st.ses=o.ses||[];st.err=o.err||{};st.log=o.log||[];}}catch(e){}
+const STG={aqli:"الحفظ العقلي",lisan:"الحفظ اللساني",near:"مراجعة متباعدة",stable:"مثبّت",wird:"في الورد"};
+const L=["استماع مركّز لمصحف مجوَّد","تكرار نظرًا","تكرار عن ظهر قلب"];
+/* جدولة المراجعة: SM-2 — المراجعتان الأوليان ثابتتان (FIX) ثم الفاصل = السابق × معامل السهولة، ويتثبّت المقطع حين يبلغ فاصله GRAD يومًا */
+const INT=[3,7,30],EF0=2.5,EFMIN=1.3,FIX=[3,7],GRAD=30,MAXI=90,Q4=[1,3,4,5];
+let st={items:[],w:{},tab:"today",sel:0,bk:0,set:{lt:30,rm:false,hr:"18:00",ln:"",push:0,wm:7},tm:{},ses:[],err:{},log:[]};
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const ymd=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
 const today=()=>ymd(new Date());
 const D=d=>new Date(d+"T00:00:00");
 const days=d=>d?Math.round((D(today())-D(d))/864e5):null;
 const addDays=(d,n)=>{const x=D(d);x.setDate(x.getDate()+n);return ymd(x)};
 const fd=d=>d?WD[D(d).getDay()]+" "+d.split("-").reverse().join("/"):"";
-const $=s=>document.querySelector(s);
+const dws=n=>n==1?"يومًا واحدًا":n==2?"يومين":n<=10?n+" أيامٍ":n+" يومًا";
+const dots=(n,m)=>Array.from({length:m},(_,k)=>`<i class="${k<n?"on":""}"></i>`).join("");
 const nm=i=>SD[i][0];
-const rng=it=>it.a===it.b?`آية ${it.a}`:`الآيات ${it.a} – ${it.b}`;
+const rng=i=>i.a?(i.a===i.b?`آية ${i.a}`:`الآيات ${i.a} – ${i.b}`):esc(i.p||"مقطع");
+const LT=()=>st.set.lt||30;
+const inprog=i=>i.stage==="aqli"||i.stage==="lisan";
+const rf=i=>i.lastRev||i.tdate||i.date;
+const reps=i=>i.reps!==undefined?i.reps:(i.lv||0);
+const efo=o=>o.ef||EF0;
+const iv=i=>i.iv||INT[Math.min(2,i.lv||0)];
+const wmax=()=>st.set.wm||7;
+/* معامل السهولة بعد تقييم g (0 ضعيفة،1 متردد،2 متقنة،3 سهلة) — معادلة SM-2 */
+const efn=(ef,g)=>{const q=Q4[g];return Math.max(EFMIN,Math.round((ef+0.1-(5-q)*(0.08+(5-q)*0.02))*100)/100)};
+/* الفاصل القادم للمقطع لو قُيّم بـ g (يُحسب بالمعامل قبل تعديله) */
+function nextIv(i,g){if(g===0)return null;const ivl=iv(i);if(g===1)return ivl;const r=reps(i)+1,ef=efn(efo(i),g);
+ return Math.min(MAXI,r<FIX.length?FIX[r]:Math.max(ivl+1,Math.round(ivl*ef)))}
+function wnext(w,g){if(g===0||g===1)return 3;return Math.max(7,Math.min(wmax(),Math.round(wiv(w)*efn(efo(w),g))))}
+const wiv=w=>w.iv||7;
+const wd=s=>st.w[s].last===null||days(st.w[s].last)>=wiv(st.w[s]);
+const nd=i=>i.stage==="near"&&days(rf(i))>=iv(i);
+const lg=(t,q)=>st.log.push({d:today(),t,q});
+const find=id=>st.items.find(i=>i.id===id);
 const go=t=>{st.tab=t;render();scrollTo(0,0)};
-const save=()=>{try{localStorage.setItem(KEY,JSON.stringify({items:st.items,w:st.w,set:st.set,tm:st.tm,ses:st.ses,err:st.err,log:st.log}))}catch(e){}syncIdb();psyncLater()};
+const bar=p=>`<div class="bar"><i style="width:${p}%"></i></div>`;
+let uid=Date.now();
+/* ===== البيانات والترحيل من التطبيقين القديمين ===== */
+const dat=()=>({v:2,items:st.items,w:st.w,set:st.set,tm:st.tm,ses:st.ses,err:st.err,log:st.log});
+function ld(o){st.items=o.items||[];st.w=o.w||{};st.set=Object.assign(st.set,o.set||{});st.tm=o.tm||{};st.ses=o.ses||[];st.err=o.err||{};st.log=o.log||[]}
+function conv(o){
+ if(!o||!Array.isArray(o.items))return null;
+ if(o.v===2)return o;
+ const items=[],w={},ix=n=>SD.findIndex(x=>x[0]===String(n).trim());
+ if(Array.isArray(o.wird)||o.items.some(x=>x.surah!==undefined)){ /* تطبيق متابعة الحفظ القديم */
+  o.items.forEach(x=>{const s=ix(x.surah);if(s<0)return;
+   const m=String(x.part||"").replace(/[٠-٩]/g,d=>"٠١٢٣٤٥٦٧٨٩".indexOf(d)).match(/\d+/g);let a=0,b=0;
+   if(m){a=+m[0];b=+(m[1]||m[0]);if(a>b)[a,b]=[b,a];if(a<1||b>SD[s][1])a=b=0}
+   const g=x.stage==1?"aqli":x.stage==2?"lisan":x.stage==3?"near":"stable",r=x.rev||0;
+   items.push({id:++uid,s,a,b,p:x.part||"",stage:g,date:x.created||x.last||today(),c:x.c||[0,0,0],lisan:x.lisan||0,lv:g==="near"?Math.min(2,r):g==="stable"?3:0,lastRev:g==="near"&&r>0?x.last:null,tdate:g==="near"&&r==0?x.last:null,revs:r,bk:null})});
+  (o.wird||[]).forEach(r=>{const s=ix(r.surah);if(s>=0)w[s]={last:r.last||null,since:r.added||today()}});
+  items.forEach(i=>{if(w[i.s]&&i.stage==="stable")i.stage="wird"});
+  return{items,w,set:{},ses:[],err:{},log:[]}
+ }
+ /* تطبيق مراحل الحفظ القديم */
+ const mp=[0,0,1,1,2];
+ o.items.forEach(x=>{const g=x.stage==="tathbit"?"lisan":x.stage==="near"?"near":"wird";
+  items.push({id:++uid,s:x.s,a:x.a,b:x.b,stage:g,date:x.date,c:[3,3,3],lisan:x.reps||0,lv:g==="near"?mp[x.lv||0]:g==="wird"?3:0,lastRev:x.lastRev||null,tdate:x.tdate||null,revs:x.revs||0,bk:x.bk||null})});
+ const ss=o.set||{};
+ return{items,w:o.w||{},set:{rm:ss.rm,hr:ss.hr},ses:o.ses||[],err:o.err||{},log:o.log||[]}
+}
+function migrate(){let n=0;OLD.forEach(k=>{try{const r=localStorage.getItem(k);if(!r)return;const c=conv(JSON.parse(r));if(!c)return;
+ st.items.push(...c.items);Object.assign(st.w,c.w);st.ses.push(...(c.ses||[]));st.log.push(...(c.log||[]));Object.assign(st.err,c.err||{});
+ if(c.set&&c.set.hr){st.set.hr=c.set.hr;st.set.rm=!!c.set.rm}n++}catch(e){}});
+ if(n)setTimeout(()=>{save();render();toast("نُقلت بياناتك من النسخة السابقة")},400)}
+try{const r=localStorage.getItem(KEY);if(r)ld(JSON.parse(r));else migrate()}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(dat()))}catch(e){}syncIdb();psyncLater()};
 function syncIdb(){try{const q=indexedDB.open("hifz",1);q.onupgradeneeded=()=>q.result.createObjectStore("k");q.onsuccess=()=>{const tx=q.result.transaction("k","readwrite");tx.objectStore("k").put({rm:st.set.rm,hr:st.set.hr,g:gaps().map(x=>({d:x.d,m:x.m}))},"g")}}catch(e){}}
 function toast(t){const e=$("#toast");e.textContent=t;e.className="s";clearTimeout(toast.t);toast.t=setTimeout(()=>e.className="",2600)}
-function covered(s){const set=new Set();st.items.filter(i=>i.s===s).forEach(i=>{for(let k=i.a;k<=i.b;k++)set.add(k)});return set}
+/* ===== تغطية الآيات ===== */
+function covered(s){const set=new Set();st.items.filter(i=>i.s===s&&i.a).forEach(i=>{for(let k=i.a;k<=i.b;k++)set.add(k)});return set}
 function nextFree(s){const c=covered(s);for(let k=1;k<=SD[s][1];k++)if(!c.has(k))return k;return null}
 function limit(s,a){const c=covered(s);for(let k=a+1;k<=SD[s][1];k++)if(c.has(k))return k-1;return SD[s][1]}
 function opts(a,b,sel,dis){let h="";for(let k=a;k<=b;k++)h+=`<option value="${k}" ${k===sel?"selected":""} ${dis&&dis(k)?"disabled":""}>${k}</option>`;return h}
 function fixTo(){const a=+$("#a").value,l=limit(st.sel,a),c=+$("#b").value;$("#b").innerHTML=opts(a,l,c>=a&&c<=l?c:Math.min(l,a+4))}
-/* الغفلة: مقطع قريب لم يُراجع يومين، تثبيت معلّق 3 أيام، ورد أسبوعي متأخر 10 أيام */
-function gaps(){const r=[];st.items.forEach(i=>{if(i.stage==="near")r.push({d:addDays(rf(i),iv(i)+1),m:`${nm(i.s)} ${rng(i)}: لم تُراجَع`,tab:"n"});if(i.stage==="tathbit")r.push({d:addDays(i.bk||i.date,3),m:`${nm(i.s)} ${rng(i)}: ينتظر التثبيت`,tab:"t"})});Object.keys(st.w).forEach(s=>r.push({d:addDays(st.w[s].last||st.w[s].since,wiv(st.w[s])+3),m:`سورة ${nm(+s)}: تأخرت مراجعتها الأسبوعية`,tab:"w"}));return r}
+/* ===== الغفلة والتنبيه ===== */
+function gaps(){const r=[];st.items.forEach(i=>{
+ if(inprog(i))r.push({d:addDays(i.bk||i.date,3),m:`${nm(i.s)} ${rng(i)}: ينتظر إتمام الحفظ`,tab:"mem"});
+ if(i.stage==="near")r.push({d:addDays(addDays(rf(i),iv(i)),1),m:`${nm(i.s)} ${rng(i)}: لم تُراجَع`,tab:"near"})});
+ Object.keys(st.w).forEach(s=>{const w=st.w[s];r.push({d:addDays(w.last||w.since,wiv(w)+3),m:`سورة ${nm(+s)}: تأخرت مراجعتها الأسبوعية`,tab:"w"})});return r}
 const late=()=>gaps().filter(x=>x.d<=today());
-const INT=[1,3,7,14,30],rf=i=>i.lastRev||i.tdate||i.date,iv=i=>INT[i.lv||0],wiv=w=>w.iv||7;
-const lg=(t,q)=>st.log.push({d:today(),t,q});
 function ban(){const l=late();if(!l.length)return"";return `<div class="card warn"><div class="t">⚠ غفلة عن المراجعة (${l.length})</div>${l.slice(0,3).map(x=>`<div class="m" style="margin-top:4px" onclick="go('${x.tab}')">• ${x.m}</div>`).join("")}${l.length>3?`<div class="m">و${l.length-3} أخرى</div>`:""}</div>`}
-/* الإشعارات */
-function ntf(t,b){if("Notification" in window&&Notification.permission==="granted"&&navigator.serviceWorker)navigator.serviceWorker.ready.then(r=>r.showNotification(t,{body:b,icon:"icon-192.png",tag:"hifz",lang:"ar",dir:"rtl"})).catch(()=>{})}
+function ntf(t,b){if("Notification" in window&&Notification.permission==="granted"&&navigator.serviceWorker)navigator.serviceWorker.ready.then(r=>r.showNotification(t,{body:b,icon:"icons/icon-192.png",tag:"hifz",lang:"ar",dir:"rtl"})).catch(()=>{})}
 async function enRm(){if(!("Notification" in window))return toast("المتصفح لا يدعم الإشعارات");if(await Notification.requestPermission()!=="granted")return toast("لم يُمنح إذن الإشعارات");st.set.rm=true;save();try{const r=await navigator.serviceWorker.ready;if(r.periodicSync)await r.periodicSync.register("hifz-check",{minInterval:12*36e5})}catch(e){}toast("فُعّل التذكير");render()}
 function remind(){const l=late(),n=new Date(),hm=String(n.getHours()).padStart(2,"0")+":"+String(n.getMinutes()).padStart(2,"0");if(st.set.rm&&l.length&&st.set.ln!==today()&&hm>=st.set.hr){st.set.ln=today();save();ntf("⚠ غفلة عن المراجعة",l.length+" من محفوظك يحتاج مراجعة: "+l[0].m)}}
 /* Push من الخادم (Netlify Functions) */
@@ -102,7 +173,7 @@ async function pushOff(){
  try{const reg=await navigator.serviceWorker.ready,sub=await reg.pushManager.getSubscription();if(sub){await post({action:"unsub",endpoint:sub.endpoint}).catch(()=>{});await sub.unsubscribe()}}catch(e){}
  st.set.push=0;save();toast("أُلغي إشعار الخادم");render()}
 setInterval(remind,6e4);document.addEventListener("visibilitychange",()=>{if(!document.hidden){render();remind()}});
-/* المؤقت */
+/* ===== مؤقت الجلسة ===== */
 const tmo=k=>st.tm[k]||(st.tm[k]={run:0,t0:0,acc:0,tg:15,al:0});
 const tsec=k=>{const t=tmo(k);return Math.floor(t.acc+(t.run?(Date.now()-t.t0)/1000:0))};
 const fmt=s=>String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0");
@@ -111,122 +182,135 @@ function tdone(k){const s=tsec(k);if(s<30)return toast("الجلسة قصيرة 
 function tset(k,v){tmo(k).tg=+v;tmo(k).al=0;save()}
 function tbar(k){const t=tmo(k),td=Math.round(st.ses.filter(x=>x.d===today()&&x.k===k).reduce((a,x)=>a+x.s,0)/60);
  return `<div class="card tm"><div class="top"><span class="m">⏱ مؤقت الجلسة</span><span class="m">مجموع اليوم: ${td} د</span></div><div class="top"><b id="tmv">${fmt(tsec(k))}</b><select onchange="tset('${k}',this.value)"><option value="0">بلا هدف</option>${[10,15,20,30,45,60].map(x=>`<option value="${x}" ${t.tg==x?"selected":""}>الهدف ${x} د</option>`).join("")}</select></div><div class="acts"><button onclick="tgl('${k}')">${t.run?"⏸ إيقاف":"▶ ابدأ"}</button><button class="ghost" onclick="tdone('${k}')">💾 حفظ الجلسة</button></div></div>`}
-setInterval(()=>{Object.keys(st.tm).forEach(k=>{const t=st.tm[k];if(!t.run)return;const s=tsec(k);if(k===st.tab&&$("#tmv"))$("#tmv").textContent=fmt(s);if(t.tg&&!t.al&&s>=t.tg*60){t.al=1;save();navigator.vibrate&&navigator.vibrate([200,100,200]);toast("⏰ انتهى وقت الجلسة المحدد");ntf("مراحل الحفظ","انتهى وقت الجلسة المحدد")}})},1000);
-/* الإجراءات */
-function checkComplete(s){
- const its=st.items.filter(i=>i.s===s);
- if(!its.length||its.some(i=>i.stage==="tathbit")||covered(s).size<SD[s][1])return;
- const near=its.filter(i=>i.stage==="near");
- if(near.length){near.forEach(i=>i.stage="weekly");st.w[s]=st.w[s]||{last:null,since:today()};toast(`🎉 اكتملت سورة ${nm(s)} وانتقلت إلى المراجعة الأسبوعية`)}
-}
+setInterval(()=>{Object.keys(st.tm).forEach(k=>{const t=st.tm[k];if(!t.run)return;const s=tsec(k);if(k===st.tab&&$("#tmv"))$("#tmv").textContent=fmt(s);if(t.tg&&!t.al&&s>=t.tg*60){t.al=1;save();navigator.vibrate&&navigator.vibrate([200,100,200]);toast("⏰ انتهى وقت الجلسة المحدد");ntf("متابعة الحفظ","انتهى وقت الجلسة المحدد")}})},1000);
+/* ===== الإجراءات ===== */
 function add(){
  if(!$("#a"))return;
  const s=st.sel,a=+$("#a").value,b=+$("#b").value,n=SD[s][1];
  if(!a||!b||a<1||b>n||a>b)return toast(`أدخل مقداراً صحيحاً بين 1 و ${n}`);
- const l=late();if(l.length&&!confirm(`لديك ${l.length} مقطع متأخر المراجعة، والأولى مراجعته قبل حفظ جديد. هل تتابع؟`))return;
- st.items.push({id:Date.now(),s,a,b,stage:"tathbit",date:today(),reps:0,lastRev:null,revs:0});
- lg("h");save();toast("✅ سُجّلت جلسة الحفظ وانتقل المقدار إلى التثبيت");render()
+ const l=late();if(l.length&&!confirm(`لديك ${l.length} مقطع متأخر، والأولى مراجعته قبل حفظ جديد. هل تتابع؟`))return;
+ st.items.push({id:++uid,s,a,b,stage:"aqli",date:today(),c:[0,0,0],lisan:0,lv:0,lastRev:null,tdate:null,revs:0,bk:null});
+ lg("h");save();toast("✅ بدأ المقطع: 9 تكرارات للحفظ العقلي");render()
 }
-const find=id=>st.items.find(i=>i.id===id);
-function rep(id,n){const i=find(id),tg=st.set.tg,p=i.reps;i.reps=Math.max(0,i.reps+n);if(p<tg&&i.reps>=tg){navigator.vibrate&&navigator.vibrate(150);toast(`🎯 بلغت هدف التكرار (${tg})`)}save();render()}
-function doneT(id){const i=find(id),tg=st.set.tg;if(i.reps<tg&&!confirm(`التكرار ${i.reps} من ${tg}. هل أنجزت التثبيت فعلاً؟`))return;i.stage="near";i.tdate=today();i.lv=0;lg("t");save();toast("انتقل المقدار إلى المراجعة القريبة");checkComplete(i.s);save();render()}
-function revNear(id,q){const i=find(id);i.lastRev=today();i.revs++;lg("n",q);
- if(q===0){i.stage="tathbit";i.reps=0;i.bk=today();i.lv=0;i.tdate=null;toast("عاد المقطع إلى التثبيت لتقويته")}
- else if(q===2){i.lv=Math.min(4,(i.lv||0)+1);toast(`أحسنت — المراجعة القادمة بعد ${iv(i)} يوم`)}
- else toast("يبقى في نفس المستوى");save();render()}
-function finishNear(s){
- const c=covered(s).size,n=SD[s][1];
- if(c<n&&!confirm(`سورة ${nm(s)} لم يُسجَّل منها سوى ${c} من ${n} آية. هل تريد إنهاء المراجعة القريبة ونقلها إلى الأسبوعية؟`))return;
- st.items.filter(i=>i.s===s&&i.stage==="near").forEach(i=>i.stage="weekly");
- st.w[s]=st.w[s]||{last:null,since:today()};save();toast(`✔ انتقلت سورة ${nm(s)} إلى المراجعة الأسبوعية`);render()
-}
-function revW(s,q){const w=st.w[s];w.last=today();lg("w",q);
- if(q===0){st.items.filter(i=>i.s===s).forEach(i=>{i.stage="near";i.lv=0;i.lastRev=today()});delete st.w[s];toast(`رجعت سورة ${nm(s)} إلى المراجعة القريبة`)}
- else{w.iv=q===1?3:7;toast(q===1?"مراجعتها القادمة بعد 3 أيام":"أحسنت — تمت المراجعة")}save();render()}
+function cn(id,k,d){const i=find(id);i.c[k]=Math.max(0,Math.min(3,i.c[k]+d));save();render()}
+function toL(id){const i=find(id);i.stage="lisan";i.bk=today();lg("a");save();toast("انتقل المقطع إلى الحفظ اللساني");render()}
+function lis(id,n){const i=find(id),p=i.lisan;i.lisan=Math.max(0,i.lisan+n);if(p<LT()&&i.lisan>=LT()){navigator.vibrate&&navigator.vibrate(150);toast(`🎯 بلغت ${LT()} تكرارًا`)}save();render()}
+function toN(id){const i=find(id);if(i.lisan<LT()&&!confirm(`التكرار ${i.lisan} من ${LT()}. هل تحقق الحفظ اللساني فعلاً؟`))return;
+ i.stage="near";i.tdate=today();i.lv=0;i.reps=0;i.iv=FIX[0];i.lastRev=null;lg("t");save();toast("بدأت المراجعة المتباعدة: الأولى بعد 3 أيام");render()}
+function revNear(id,g){const i=find(id),n=nextIv(i,g),ef=efn(efo(i),g);i.lastRev=today();i.revs++;lg("n",g);i.ef=ef;
+ if(g===0){i.lapses=(i.lapses||0)+1;i.stage="lisan";i.lisan=0;i.bk=today();i.lv=0;i.reps=0;i.iv=FIX[0];i.tdate=null;toast("عاد المقطع إلى الحفظ اللساني لتقويته")}
+ else if(g===1)toast(`يُعاد في نفس المستوى بعد ${iv(i)} يوم`);
+ else{i.reps=reps(i)+1;i.lv=Math.min(2,i.reps);i.iv=n;
+  if(n>=GRAD){i.stage="stable";toast(`🎉 ثُبّت المقطع بعد ${i.reps} مراجعات ناجحة`);checkComplete(i.s)}else toast(`أحسنت — المراجعة القادمة بعد ${n} يوم`)}
+ save();render()}
+function checkComplete(s){
+ const its=st.items.filter(i=>i.s===s);
+ if(!its.length||covered(s).size<SD[s][1]||!its.every(i=>i.stage==="stable"||i.stage==="wird"))return;
+ its.forEach(i=>i.stage="wird");st.w[s]=st.w[s]||{last:null,since:today()};
+ toast(`🎉 اكتملت سورة ${nm(s)} وانتقلت إلى الورد الأسبوعي`)}
+function toW(s){const c=covered(s).size,n=SD[s][1],its=st.items.filter(i=>i.s===s);
+ if(!confirm(`سورة ${nm(s)}: ${c} من ${n} آية مسجّلة. نقلها إلى الورد الأسبوعي؟`))return;
+ its.filter(i=>i.stage==="near"||i.stage==="stable").forEach(i=>i.stage="wird");st.w[s]=st.w[s]||{last:null,since:today()};save();toast(`انتقلت سورة ${nm(s)} إلى الورد`);render()}
+function addW(){const s=+$("#ws").value;if(st.w[s])return toast("السورة في الورد بالفعل");st.w[s]={last:null,since:today()};save();toast("أُضيفت إلى الورد");render()}
+function rmW(s){if(!confirm(`إزالة سورة ${nm(s)} من الورد؟`))return;delete st.w[s];st.items.filter(i=>i.s===s&&i.stage==="wird").forEach(i=>i.stage="stable");save();render()}
+function revW(s,g){const w=st.w[s],its=st.items.filter(i=>i.s===s&&i.stage==="wird"),n=wnext(w,g),ef=efn(efo(w),g);w.last=today();lg("w",g);
+ if(g===0&&its.length){its.forEach(i=>{i.stage="near";i.lv=0;i.reps=0;i.iv=FIX[0];i.lapses=(i.lapses||0)+1;i.ef=efn(efo(i),0);i.lastRev=today();i.tdate=null});delete st.w[s];toast(`رجعت سورة ${nm(s)} إلى المراجعة المتباعدة`)}
+ else{w.ef=ef;w.iv=n;toast(g<=1?"مراجعتها القادمة بعد 3 أيام":`أحسنت — المراجعة القادمة بعد ${n} يوم`)}
+ save();render()}
+function del(id){if(confirm("حذف هذا المقطع؟")){st.items=st.items.filter(i=>i.id!==id);save();render()}}
 function addErr(s){const n=SD[s][1],v=+prompt(`رقم الآية الموضع (1 – ${n})`);if(!v||v<1||v>n)return;const e=st.err[s]=st.err[s]||[],x=e.find(y=>y.v===v);x?x.c++:e.push({v,c:1,d:today()});save();render()}
 function delErr(s,v){if(confirm(`أتقنت موضع الآية ${v}؟ سيُحذف من السجل`)){st.err[s]=(st.err[s]||[]).filter(y=>y.v!==v);save();render()}}
 function errs(s){const e=(st.err[s]||[]).sort((a,b)=>a.v-b.v);return `<div class="m" style="margin-top:8px">مواضع التردد: ${e.length?e.map(x=>`<span class="badge d" onclick="delErr(${s},${x.v})">${x.v}${x.c>1?" ×"+x.c:""}</span>`).join(" "):"لا شيء"} <span class="badge" onclick="addErr(${s})">＋ موضع</span></div>`}
-const rate=(f,id)=>`<div class="acts"><button onclick="${f}(${id},2)">✔ متقنة</button><button class="ghost" onclick="${f}(${id},1)">〰 متردد</button><button class="ghost" onclick="${f}(${id},0)">✖ ضعيفة</button></div>`;
+const rbtn=(f,id,g,lbl,pv,gh)=>`<button class="${gh?"ghost":""}" onclick="${f}(${id},${g})">${lbl}<small>${pv}</small></button>`;
+const pv=n=>n>=GRAD?"تثبيت ✓":n+" ي";
+const rateN=i=>`<div class="acts g4">${rbtn("revNear",i.id,0,"✖ ضعيفة","للحفظ",1)}${rbtn("revNear",i.id,1,"〰 متردد",iv(i)+" ي",1)}${rbtn("revNear",i.id,2,"✔ متقنة",pv(nextIv(i,2)))}${rbtn("revNear",i.id,3,"★ سهلة",pv(nextIv(i,3)),1)}</div>`;
+const rateW=s=>{const w=st.w[s];return `<div class="acts g4">${rbtn("revW",s,0,"✖ ضعيفة","للمراجعة",1)}${rbtn("revW",s,1,"〰 متردد","3 ي",1)}${rbtn("revW",s,2,"✔ متقنة",wnext(w,2)+" ي")}${rbtn("revW",s,3,"★ سهلة",wnext(w,3)+" ي",1)}</div>`}
 function streak(){const s=new Set(st.log.map(x=>x.d));let d=today(),n=0;if(!s.has(d))d=addDays(d,-1);while(s.has(d)){n++;d=addDays(d,-1)}return n}
-function statCard(){const f=addDays(today(),-6),l=st.log.filter(x=>x.d>=f),r=l.filter(x=>x.q!==undefined),g=r.filter(x=>x.q===2).length;return `<div class="card"><div class="top"><span class="t">🔥 ${streak()} يوم متتالٍ</span><span class="m">آخر 7 أيام</span></div><div class="m" style="margin-top:6px">حفظ جديد: <b>${l.filter(x=>x.t==="h").length}</b> · مراجعات: <b>${r.length}</b> · متقنة: <b>${r.length?Math.round(g/r.length*100):0}%</b></div></div>`}
-function del(id){if(confirm("حذف هذا المقدار؟")){st.items=st.items.filter(i=>i.id!==id);save();render()}}
-function bar(p){return `<div class="bar"><i style="width:${p}%"></i></div>`}
+function statCard(){const f=addDays(today(),-6),l=st.log.filter(x=>x.d>=f),r=l.filter(x=>x.q!==undefined),g=r.filter(x=>x.q>=2).length;return `<div class="card"><div class="top"><span class="t">🔥 ${streak()} يوم متتالٍ</span><span class="m">آخر 7 أيام</span></div><div class="m" style="margin-top:6px">مقاطع جديدة: <b>${l.filter(x=>x.t==="h").length}</b> · مراجعات: <b>${r.length}</b> · متقنة: <b>${r.length?Math.round(g/r.length*100):0}%</b></div></div>`}
+function fcast(){const a=Array(7).fill(0),ad=k=>{if(k<=6)a[Math.max(0,k)]++};
+ st.items.forEach(i=>{if(i.stage==="near")ad(iv(i)-days(rf(i)))});
+ Object.keys(st.w).forEach(s=>{const w=st.w[s];ad(w.last===null?0:wiv(w)-days(w.last))});
+ return `<div class="card"><div class="t" style="font-size:18px">📊 توقّع المراجعات (7 أيام)</div><div class="fc">${a.map((n,k)=>`<div><b>${n}</b><span>${k?WD[D(addDays(today(),k)).getDay()]:"اليوم"}</span></div>`).join("")}</div></div>`}
 function dl(n,t,m){const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([t],{type:m}));a.download=n;a.click()}
-function ics(){const h=st.set.hr.replace(":",""),d=today().replace(/-/g,"");dl("hifz-reminder.ics",["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//hifz//AR","BEGIN:VEVENT","UID:hifz-daily@local","DTSTAMP:"+d+"T000000Z","DTSTART:"+d+"T"+h+"00","DURATION:PT15M","RRULE:FREQ=DAILY","SUMMARY:راجع محفوظك - مراحل الحفظ","BEGIN:VALARM","ACTION:DISPLAY","DESCRIPTION:وقت المراجعة","TRIGGER:PT0S","END:VALARM","END:VEVENT","END:VCALENDAR"].join("\r\n"),"text/calendar")}
-function exp(){dl("hifz-backup-"+today()+".json",JSON.stringify({items:st.items,w:st.w,set:st.set,ses:st.ses,err:st.err,log:st.log}),"application/json")}
-function imp(f){if(!f)return;f.text().then(t=>{try{const o=JSON.parse(t);st.items=o.items||[];st.w=o.w||{};st.set=Object.assign(st.set,o.set||{});st.ses=o.ses||[];st.err=o.err||{};st.log=o.log||[];save();toast("تم الاستيراد");render()}catch(e){toast("ملف غير صالح")}})}
-/* الشاشات */
-function vNew(){
- const s=st.sel,n=SD[s][1],nx=nextFree(s),c=covered(s),cn=c.size;
- const so=SD.map((x,i)=>`<option value="${i}" ${i===s?"selected":""}>${i+1}. ${x[0]} (${x[1]})</option>`).join("");
- const log=[...st.items].sort((x,y)=>y.id-x.id).slice(0,5).map(i=>`<div class="card"><div class="top"><span class="t">${nm(i.s)} · ${rng(i)}</span><span class="m">${fd(i.date)}</span></div></div>`).join("");
- const form=nx?`<div class="row"><div><label>من آية (1 – ${n})</label><select id="a">${opts(1,n,nx,k=>c.has(k))}</select></div>
- <div><label>إلى آية</label><select id="b">${opts(nx,limit(s,nx),Math.min(limit(s,nx),nx+4))}</select></div></div>
- <button class="big" onclick="add()">✔ أنجزت الحفظ وسجّل الجلسة</button>`:`<div class="empty">السورة مسجّلة بالكامل ✔</div>`;
- return statCard()+`<div class="card"><label>السورة (عدد آياتها)</label><select id="s">${so}</select>
- <div class="m" style="margin-top:8px">${cn} من ${n} آية مسجّلة</div>${bar(Math.round(cn/n*100))}${form}</div>
- <h3 style="margin:16px 4px 8px;font-size:15px">آخر الجلسات</h3>${log||'<div class="empty">لا توجد جلسات بعد</div>'}`
-}
-function vT(){
- const l=st.items.filter(i=>i.stage==="tathbit"),tg=st.set.tg;
- if(!l.length)return '<div class="empty">لا يوجد ما يحتاج تثبيتاً.<br>سجّل جلسة حفظ جديدة لتظهر هنا.</div>';
- return l.map(i=>{const g=days(i.bk||i.date)>=3;return `<div class="card"><div class="top"><span class="t">${nm(i.s)} · ${rng(i)}</span><span class="badge ${g?"d":""}">${g?"متأخر · ":""}حُفظ ${fd(i.date)}</span></div>
- <div class="top" style="margin-top:8px"><span class="cnt">${i.reps} <span class="m">/ ${tg}</span></span><span class="m">${i.reps>=tg?"✔ بلغت الهدف":"عداد التكرار"}</span></div>${bar(Math.min(100,Math.round(i.reps/tg*100)))}
- <div class="acts"><button onclick="rep(${i.id},1)">＋ تكرار</button><button class="ghost" onclick="rep(${i.id},5)">＋5</button><button class="ghost" onclick="rep(${i.id},-1)">−1</button></div>
- <div class="acts"><button onclick="doneT(${i.id})">✔ أنجزت التثبيت</button><button class="ghost" onclick="del(${i.id})">🗑</button></div></div>`}).join("")
-}
-function vN(){
- const ss=[...new Set(st.items.filter(i=>i.stage==="near").map(i=>i.s))];
- if(!ss.length)return '<div class="empty">لا توجد مقاطع في المراجعة القريبة.<br>تظهر هنا بعد إنجاز التثبيت.</div>';
- return ss.map(s=>{const c=covered(s).size,n=SD[s][1],its=st.items.filter(i=>i.s===s&&i.stage==="near");
- return `<div class="card"><div class="top"><span class="t">سورة ${nm(s)}</span><span class="badge">${c}/${n} آية</span></div>${bar(Math.round(c/n*100))}
- <div class="m">تنتقل إلى المراجعة الأسبوعية عند اكتمال السورة وتثبيت كل مقاطعها</div>
- <div class="acts"><button onclick="finishNear(${s})">✔ أنجزت المراجعة القريبة للسورة</button></div>
- ${its.map(i=>{const d=days(i.lastRev),ok=i.lastRev===today(),r=days(rf(i)),g=r>=iv(i)+1,du=r>=iv(i);return `<div style="border-top:1px solid var(--line);margin-top:10px;padding-top:10px"><div class="top"><span>${rng(i)}</span><span class="badge ${g?"d":""}">${g?"غفلة":du?"مستحقة":"بعد "+(iv(i)-r)+" يوم"}</span></div>
- <div class="m" style="margin-top:4px">حُفظ ${fd(i.date)}${i.tdate?` · ثُبّت ${fd(i.tdate)}`:""}</div>
- <div class="m">المستوى ${(i.lv||0)+1}/5 · كل ${iv(i)} يوم · ${i.lastRev?(ok?"روجع اليوم":`آخر مراجعة ${fd(i.lastRev)} (قبل ${d} يوم)`):"لم تُراجع بعد"} · ${i.revs}×</div>
- ${ok?'<div class="acts"><button disabled>✔ تمت اليوم</button></div>':rate("revNear",i.id)}</div>`}).join("")}${errs(s)}</div>`}).join("")
-}
-function vW(){
- const ks=Object.keys(st.w).map(Number).sort((a,b)=>a-b);
- if(!ks.length)return '<div class="empty">لا توجد سور مكتملة بعد.<br>عند اكتمال سورة تنتقل هنا للمراجعة الأسبوعية.</div>';
- const due=ks.filter(s=>st.w[s].last===null||days(st.w[s].last)>=wiv(st.w[s]));
- return `<div class="card"><div class="t">ورد هذا الأسبوع</div><div class="m">${ks.length-due.length} من ${ks.length} سور رُوجعت خلال 7 أيام</div>${bar(Math.round((ks.length-due.length)/ks.length*100))}</div>`+
- ks.map(s=>{const w=st.w[s],ref=w.last||w.since,d=days(w.last),isD=w.last===null||d>=wiv(w),nx=addDays(ref,wiv(w));
- return `<div class="card"><div class="top"><span class="t">سورة ${nm(s)}</span><span class="badge ${isD?"d":""}">${isD?"مستحقة":"مُراجَعة"}</span></div>
+function ics(){const h=st.set.hr.replace(":",""),d=today().replace(/-/g,"");dl("hifz-reminder.ics",["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//hifz//AR","BEGIN:VEVENT","UID:hifz-daily@local","DTSTAMP:"+d+"T000000Z","DTSTART:"+d+"T"+h+"00","DURATION:PT15M","RRULE:FREQ=DAILY","SUMMARY:راجع محفوظك - متابعة الحفظ","BEGIN:VALARM","ACTION:DISPLAY","DESCRIPTION:وقت المراجعة","TRIGGER:PT0S","END:VALARM","END:VEVENT","END:VCALENDAR"].join("\r\n"),"text/calendar")}
+const exp=()=>dl("hifz-backup-"+today()+".json",JSON.stringify(dat()),"application/json");
+function impT(t){try{const c=conv(JSON.parse(t));if(!c)throw 0;ld(c);save();toast("تم الاستيراد");render()}catch(e){toast("ملف أو نص غير صالح")}}
+const imp=f=>f&&f.text().then(impT);
+/* ===== الشاشات ===== */
+function mcard(i){const tg=LT();let b;
+ if(i.stage==="aqli"){
+  b=L.map((n,k)=>`<div class="row"><span>${n}</span><span class="dots">${dots(i.c[k],3)}</span><span><button class="sm" onclick="cn(${i.id},${k},-1)" aria-label="إنقاص">−</button><button class="sm" onclick="cn(${i.id},${k},1)" aria-label="زيادة">+</button></span></div>`).join("");
+  if(i.c.every(x=>x>=3))b+=`<button class="big" onclick="toL(${i.id})">اكتملت التكرارات التسعة ← الحفظ اللساني</button>`
+ }else{
+  b=`<div class="row"><span class="cnt">${i.lisan}<span class="m"> / ${tg} مرة</span></span><span><button class="sm" onclick="lis(${i.id},-1)" aria-label="إنقاص">−</button><button class="sm" onclick="lis(${i.id},1)">+1</button><button class="sm" onclick="lis(${i.id},5)">+5</button></span></div>${bar(Math.min(100,Math.round(i.lisan/tg*100)))}<button class="big ${i.lisan>=tg?"":"ghost"}" onclick="toN(${i.id})">تحقق الحفظ اللساني ← المراجعة المتباعدة</button>`}
+ return `<div class="card"><div class="top"><span class="t">${nm(i.s)} · ${rng(i)}</span><span class="badge">${STG[i.stage]}</span></div><div class="m">بدأ ${fd(i.date)}</div>${b}<div class="acts"><button class="lnk" onclick="del(${i.id})">🗑 حذف المقطع</button></div></div>`}
+function nrow(i){const k=iv(i)-days(rf(i)),ok=i.lastRev===today(),du=k<=0,lb=ok?"تمت اليوم":k<0?"متأخرة "+dws(-k):k==0?"تُستحق اليوم":"بعد "+dws(k),lp=i.lapses||0;
+ return `<div class="top"><span class="m">المراجعة ${reps(i)+1} · فاصلها ${dws(iv(i))}${lp>=3?' <span class="badge d">متعثّر</span>':""}</span><span class="badge ${!ok&&k<0?"d":""}">${lb}</span></div>
+ <div class="m" style="margin-top:4px">${i.lastRev?`آخر مراجعة ${fd(i.lastRev)}`:`ثُبّت لسانيًا ${fd(i.tdate)}`} · ${i.revs}× · سهولة ${efo(i).toFixed(1)}${lp?` · نسيان ×${lp}`:""}</div>
+ ${ok?'<div class="acts"><button disabled>✔ تمت اليوم</button></div>':du?rateN(i):'<div class="acts"><button disabled>لم يحن موعدها</button></div>'}`}
+function wcard(s){const w=st.w[s],ref=w.last||w.since,d=days(w.last),isD=wd(s);
+ return `<div class="card"><div class="top"><span class="t">سورة ${nm(+s)}</span><span class="badge ${isD?"d":""}">${isD?"مستحقة":"رُوجعت"}</span></div>
  <div class="m" style="margin-top:6px">${w.last?`آخر مراجعة: ${fd(w.last)} (قبل ${d} يوم)`:`دخلت الورد ${fd(w.since)} · لم تُراجع بعد`} · ${SD[s][1]} آية</div>
- <div class="m">الموعد القادم: <b>${fd(nx)}</b></div>
- ${w.last===today()?'<div class="acts"><button disabled>✔ تمت اليوم</button></div>':rate("revW",s)}${errs(s)}</div>`}).join("")
-}
-function vS(){const s=Object.assign({},st.set,{push:st.set.push&&"Notification" in window&&Notification.permission==="granted"}),ok="Notification" in window&&Notification.permission==="granted"&&s.rm;
- return `<div class="card"><div class="t">⚙ الإعدادات</div><label>هدف التكرار في مرحلة التثبيت</label><input type="number" inputmode="numeric" min="1" value="${s.tg}" onchange="st.set.tg=Math.max(1,+this.value||20);save()">
+ <div class="m">الموعد القادم: <b>${fd(addDays(ref,wiv(w)))}</b></div>
+ ${w.last===today()?'<div class="acts"><button disabled>✔ تمت اليوم</button></div>':rateW(s)}${errs(+s)}<div class="acts"><button class="lnk" onclick="rmW(${s})">إزالة من الورد</button></div></div>`}
+function vToday(){
+ const dn=st.items.filter(nd).sort((a,b)=>(days(rf(b))-iv(b))-(days(rf(a))-iv(a))),dwk=Object.keys(st.w).filter(wd),pg=st.items.filter(inprog);
+ let h=statCard();
+ if(dn.length)h+="<h2>مراجعات مستحقة</h2>"+dn.map(i=>`<div class="card"><div class="top"><span class="t">${nm(i.s)} · ${rng(i)}</span></div>${nrow(i)}</div>`).join("");
+ if(dwk.length)h+="<h2>الورد الأسبوعي</h2>"+dwk.map(wcard).join("");
+ if(pg.length)h+="<h2>قيد الحفظ</h2>"+pg.map(mcard).join("");
+ if(!dn.length&&!dwk.length&&!pg.length)h+='<div class="empty">لا مهام اليوم.<br>ابدأ بمقطع جديد من تبويب «الحفظ».</div>';
+ return h+'<button class="big" onclick="go(\'mem\')">＋ مقطع جديد للحفظ</button>'}
+function vMem(){
+ const s=st.sel,n=SD[s][1],nx=nextFree(s),c=covered(s),cn_=c.size,pg=st.items.filter(inprog);
+ const so=SD.map((x,i)=>`<option value="${i}" ${i===s?"selected":""}>${i+1}. ${x[0]} (${x[1]})</option>`).join("");
+ const form=nx?`<div class="two"><div><label>من آية (1 – ${n})</label><select id="a">${opts(1,n,nx,k=>c.has(k))}</select></div><div><label>إلى آية</label><select id="b">${opts(nx,limit(s,nx),Math.min(limit(s,nx),nx+4))}</select></div></div><button class="big" onclick="add()">＋ سجّل المقطع وابدأ التكرارات</button>`:'<div class="empty">السورة مسجّلة بالكامل ✔</div>';
+ return `<div class="card"><label>السورة (عدد آياتها)</label><select id="s">${so}</select><div class="m" style="margin-top:8px">${cn_} من ${n} آية مسجّلة</div>${bar(Math.round(cn_/n*100))}${form}</div>
+ <h2>قيد الحفظ</h2>${pg.length?pg.map(mcard).join(""):'<div class="empty">لا توجد مقاطع قيد الحفظ.</div>'}`}
+function vN(){
+ const ss=[...new Set(st.items.filter(i=>i.stage==="near"||i.stage==="stable").map(i=>i.s))].sort((a,b)=>a-b);
+ if(!ss.length)return '<div class="empty">لا توجد مقاطع في المراجعة المتباعدة.<br>تظهر هنا بعد إتمام الحفظ اللساني.</div>';
+ return fcast()+ss.map(s=>{const c=covered(s).size,n=SD[s][1],its=st.items.filter(i=>i.s===s&&(i.stage==="near"||i.stage==="stable")).sort((a,b)=>a.a-b.a);
+  return `<div class="card"><div class="top"><span class="t">سورة ${nm(s)}</span><span class="badge">${c}/${n} آية</span></div>${bar(Math.round(c/n*100))}
+  ${its.map(i=>`<div class="sep"><div class="top"><span class="t" style="font-size:18px">${rng(i)}</span></div>${i.stage==="stable"?'<div class="ok">ثُبّت ✓</div>':nrow(i)}</div>`).join("")}${errs(s)}
+  <div class="m" style="margin-top:8px">تنتقل السورة تلقائيًا إلى الورد الأسبوعي عند اكتمالها وتثبيت كل مقاطعها.</div>
+  <button class="big ghost" onclick="toW(${s})">نقل السورة إلى الورد الأسبوعي الآن</button></div>`}).join("")}
+function vW(){
+ const ks=Object.keys(st.w).map(Number).sort((a,b)=>a-b),due=ks.filter(wd);
+ const add_=`<div class="card"><label>إضافة سورة محفوظة سابقًا إلى الورد</label><div class="two"><div style="flex:3"><select id="ws">${SD.map((x,i)=>`<option value="${i}">${i+1}. ${x[0]}</option>`).join("")}</select></div><div style="flex:1"><button style="width:100%" onclick="addW()">إضافة</button></div></div></div>`;
+ if(!ks.length)return '<div class="empty">لا توجد سور في الورد بعد.<br>تدخله السورة تلقائيًا بعد اكتمالها وتثبيتها.</div>'+add_;
+ return `<div class="card"><div class="t">ورد هذا الأسبوع</div><div class="m">${ks.length-due.length} من ${ks.length} سور رُوجعت في موعدها</div>${bar(Math.round((ks.length-due.length)/ks.length*100))}</div>`+ks.map(wcard).join("")+add_}
+function vM(){return `<div class="card"><div class="t">رحلة المحفوظ</div><div class="flow">📖 عقلي ← 👄 لساني ← 🔁 مراجعة متباعدة ← 📅 ورد أسبوعي</div><p class="m">الحفظ الجديد أول محطة لا آخرها. كل مقطع يمر بأربع مراحل حتى يستقر في ورد ثابت.</p></div>
+<div class="card"><div class="t">١) الحفظ العقلي</div><p class="m">تسع تكرارات: ثلاثة استماعات مركّزة لمصحف مجوَّد، ثم ثلاث مرات نظرًا، ثم ثلاث عن ظهر قلب. تتابعها بالأزرار + و − على بطاقة المقطع.</p></div>
+<div class="card"><div class="t">٢) الحفظ اللساني</div><p class="m">أكثر من 30 تكرارًا تُثبّت المقطع على اللسان (الهدف قابل للتعديل من ⚙). فإن بقي مقطع في الحفظ 3 أيام دون إتمام عُدّ غفلة.</p></div>
+<div class="card"><div class="t">٣) المراجعة المتباعدة (SM-2)</div><p class="m">المراجعة الأولى بعد 3 أيام من الحفظ اللساني، والثانية بعد 7 أيام، ثم يُحسب الفاصل بمعادلة SM-2: الفاصل السابق × «معامل سهولة» خاص بكل مقطع (يبدأ 2.5، أدناه 1.3، وأقصى فاصل 90 يومًا). قيّم كل مراجعة بصدق: «متقنة» تنقلك إلى التالية، و«سهلة» تفعل ذلك وتزيد المعامل فتطول الفواصل، و«متردد» تُبقيك في مستواك وتُنقص المعامل، و«ضعيفة» تعيد المقطع إلى الحفظ اللساني وتُنقص المعامل كثيرًا. تحت كل زر الفاصل المتوقع. يصير المقطع «مثبّتًا» حين يبلغ فاصله القادم 30 يومًا فأكثر. من ينساه الحافظ 3 مرات تظهر عليه شارة «متعثّر» ليُعطى وقتًا أطول.</p></div>
+<div class="card"><div class="t">٤) الورد الأسبوعي</div><p class="m">تدخل السورة الورد تلقائيًا حين تكتمل آياتها وتُثبَّت كل مقاطعها، أو تنقلها بنفسك. تُراجَع كل 7 أيام افتراضيًا، ويمكنك من ⚙ رفع أقصى فاصل إلى 10 أو 14 أو 21 أو 30 يومًا فيتسع الفاصل تدريجيًا بحسب سهولة السورة عليك. «متردد» يقرّب موعدها إلى 3 أيام، و«ضعيفة» تعيدها إلى المراجعة المتباعدة. تأخرها 3 أيام عن موعدها غفلة.</p></div>
+<div class="card"><div class="t">لماذا التباعد؟</div><p class="m">أظهر تحليل Cepeda وزملائه (2006) لمئات التجارب أن توزيع المراجعة عبر الزمن يحسّن الاحتفاظ بالمعلومة، وبيّنت دراستهم (2008) أن الفاصل الأنسب يطول كلما طالت المدة التي تريد حفظ المادة فيها، وأن الفاصل القصير جدًا أضرّ من الطويل. وصنّف Dunlosky وزملاؤه (2013) الممارسة الموزعة ضمن أعلى التقنيات فائدة. أرقام الفواصل هنا تقريبية فاضبطها بتجربتك.</p></div>
+<div class="card"><div class="t">الغفلة والتذكير والمواضع</div><p class="m">عند وجود غفلة يظهر تنبيه أحمر أعلى كل شاشة، ويسألك التطبيق قبل بدء حفظ جديد وعندك مراجعة متأخرة. سجّل مواضع التردد بزر «＋ موضع» وركّز عليها عند المراجعة. لكل مرحلة مؤقت جلسة، وتعرض شاشة «اليوم» سلسلة أيامك.</p></div>
+<div class="card"><div class="t">قاعدة ذهبية</div><p class="m">راجع أولاً ثم احفظ. المراجعة المنتظمة أنفع من كثرة الجديد.</p></div>`}
+function vS(){const ok="Notification" in window&&Notification.permission==="granted",s=st.set,push=s.push&&ok;
+ return `<div class="card"><div class="t">⚙ الإعدادات</div><label>هدف التكرار في الحفظ اللساني (30 فأكثر)</label><input type="number" inputmode="numeric" min="1" value="${LT()}" onchange="st.set.lt=Math.max(1,+this.value||30);save();render()">
  <label>وقت التذكير اليومي</label><input type="time" value="${s.hr}" onchange="st.set.hr=this.value;save()">
- <div class="acts"><button onclick="enRm()">${ok?"🔔 التذكير مفعّل":"🔔 تفعيل الإشعارات"}</button><button class="ghost" onclick="ics()">📆 تذكير يومي في التقويم</button></div>
+ <label>أقصى فاصل لمراجعة الورد الأسبوعي</label><select onchange="st.set.wm=+this.value;save();render()">${[7,10,14,21,30].map(x=>`<option value="${x}" ${wmax()==x?"selected":""}>${x} أيام${x==7?" (الافتراضي)":""}</option>`).join("")}</select>
+ <div class="acts"><button onclick="enRm()">${ok&&s.rm?"🔔 التذكير مفعّل":"🔔 تفعيل الإشعارات"}</button><button class="ghost" onclick="ics()">📆 تذكير في التقويم</button></div>
  <div class="m" style="margin-top:8px">إشعارات المتصفح تعمل عند فتح التطبيق، وفي الخلفية فقط إن سمح بها النظام.</div></div>
  <div class="card"><div class="t">📡 إشعار مضمون من الخادم</div><div class="m">يصلك تنبيه الغفلة في وقت التذكير حتى لو كان التطبيق مغلقاً. يرسل الجهاز للخادم مواعيد المراجعة فقط (تواريخ وأسماء السور)، وتبقى بقية بياناتك على جهازك.</div>
- <div class="acts">${s.push?`<button class="ghost" onclick="pushOff()">🔕 إيقاف</button><button class="ghost" onclick="pushSync().then(o=>toast(o?'تمت المزامنة':'تعذّرت المزامنة'))">🔄 مزامنة الآن</button>`:`<button onclick="pushOn()">📡 تفعيل الإشعار المضمون</button>`}</div>
- ${s.push?'<div class="m" style="margin-top:8px">✔ مفعّل على هذا الجهاز</div>':''}</div>
- <div class="card"><div class="t">💾 نسخة احتياطية</div><div class="m">بياناتك محفوظة في هذا المتصفح فقط، فاحتفظ بنسخة.</div><div class="acts"><button class="ghost" onclick="exp()">تصدير</button><button class="ghost" onclick="$('#f').click()">استيراد</button><input id="f" type="file" accept=".json" hidden onchange="imp(this.files[0])"></div></div>`}
-function vM(){return `<div class="card"><div class="t">رحلة المحفوظ</div><div class="flow">📖 حفظ ← 🧱 تثبيت ← 🔁 مراجعة قريبة ← 📅 ورد أسبوعي</div>
-<p class="m">الحفظ الجديد ليس نهاية الطريق، بل أول محطة. كل مقدار تحفظه يمر بأربع مراحل حتى يستقر ويصير جزءاً من ورد ثابت، فلا يُنسى ما حفظته أمس بسبب جديد اليوم.</p></div>
-<div class="card"><div class="t">١) الحفظ</div><p class="m">اختر السورة وحدّد من آية إلى آية (ضمن عدد آيات السورة). الأفضل مقدار صغير تتقنه، والتطبيق يقترح 5 آيات. بعد التسجيل ينتقل المقدار فوراً إلى التثبيت. تنبيه: لا تُسجَّل آية مرتين.</p></div>
-<div class="card"><div class="t">٢) التثبيت</div><p class="m">تكرر المقدار غيباً حتى يثبت على اللسان، وعداد التكرار يتابعك (الهدف 20 افتراضياً، يمكنك تغييره من ⚙). لا تنتقل حتى تتلوه غيباً بلا تردد وتربطه بما قبله. فإن بقي مقدار في التثبيت 3 أيام نبّهك التطبيق.</p></div>
-<div class="card"><div class="t">٣) المراجعة القريبة</div><p class="m">بعد التثبيت تراجع المقطع أول يوم ثم تتباعد المراجعات (1، 3، 7، 14، 30 يوماً) كلما أتقنت. قيّم كل مراجعة: «متقنة» تنقلك إلى المستوى التالي، و«متردد» تبقيك في مستواك، و«ضعيفة» تعيد المقطع إلى التثبيت. تنتقل السورة تلقائياً إلى الورد الأسبوعي عند اكتمالها، وإن تجاوز المقطع موعده بيوم عُدّ غفلة.</p></div>
-<div class="card"><div class="t">٤) الورد الأسبوعي</div><p class="m">السورة المكتملة تُراجع مرة كل 7 أيام على الأقل، ويعرض التطبيق يوم موعدها القادم وتاريخه. «متردد» يقرّب موعدها إلى 3 أيام، و«ضعيفة» تعيدها إلى المراجعة القريبة. إن تأخرت 3 أيام عن موعدها عُدّت غفلة.</p></div>
-<div class="card"><div class="t">المؤقت والتذكير</div><p class="m">لكل مرحلة مؤقت جلسة بهدف اختياري، وتُجمع دقائق كل يوم. عند وجود غفلة يظهر تنبيه أحمر في أعلى كل شاشة، ويُرسل إشعار في وقتك المحدد إن فعّلته، ويسألك التطبيق قبل تسجيل حفظ جديد وعندك مراجعة متأخرة.</p></div>
-<div class="card"><div class="t">سجل المواضع والسلسلة</div><p class="m">سجّل مواضع التردد في كل سورة بزر «＋ موضع» وركّز عليها عند المراجعة، واضغط الموضع لحذفه إذا أتقنته. وتعرض شاشة الحفظ سلسلة أيامك ونشاط آخر 7 أيام.</p></div><div class="card"><div class="t">قاعدة ذهبية</div><p class="m">راجع أولاً ثم احفظ. المراجعة المنتظمة أنفع من كثرة الجديد.</p></div>`}
+ <div class="acts">${push?`<button class="ghost" onclick="pushOff()">🔕 إيقاف</button><button class="ghost" onclick="pushSync().then(o=>toast(o?'تمت المزامنة':'تعذّرت المزامنة'))">🔄 مزامنة الآن</button>`:`<button onclick="pushOn()">📡 تفعيل الإشعار المضمون</button>`}</div>${push?'<div class="m" style="margin-top:8px">✔ مفعّل على هذا الجهاز</div>':""}</div>
+ <div class="card"><div class="t">💾 نسخة احتياطية</div><div class="m">بياناتك محفوظة في هذا المتصفح فقط، فاحتفظ بنسخة. يقبل الاستيراد نسخ هذا التطبيق ونسخ التطبيقين القديمين.</div>
+ <div class="acts"><button class="ghost" onclick="exp()">تصدير ملف</button><button class="ghost" onclick="$('#f').click()">استيراد ملف</button><button class="ghost" onclick="st.bk=!st.bk;render()">نسخ/لصق نص</button><input id="f" type="file" accept=".json" hidden onchange="imp(this.files[0])"></div>
+ ${st.bk?`<textarea id="bkt" rows="6" style="margin-top:10px">${esc(JSON.stringify(dat()))}</textarea><div class="acts"><button class="ghost" onclick="$('#bkt').focus();$('#bkt').select()">تحديد النص للنسخ</button><button class="ghost" onclick="impT($('#bkt').value)">استيراد من النص</button></div>`:""}</div>`}
 function render(){
- const cnt={t:st.items.filter(i=>i.stage==="tathbit").length,n:st.items.filter(i=>i.stage==="near"&&i.lastRev!==today()&&days(rf(i))>=iv(i)).length,w:Object.keys(st.w).filter(s=>st.w[s].last===null||days(st.w[s].last)>=wiv(st.w[s])).length};
- const tabs=[["new","➕","حفظ جديد",0],["t","🧱","التثبيت",cnt.t],["n","🔁","القريبة",cnt.n],["w","📅","الأسبوعية",cnt.w],["m","📘","المنهجية",0]];
- $("#nav").innerHTML=tabs.map(t=>`<button class="${st.tab===t[0]?"on":""}" onclick="go('${t[0]}')"><b>${t[1]}</b>${t[2]}${t[3]?`<em>${t[3]}</em>`:""}</button>`).join("");
- const k=st.tab;
- $("#app").innerHTML=ban()+(["new","t","n","w"].includes(k)?tbar(k):"")+{new:vNew,t:vT,n:vN,w:vW,m:vM,s:vS}[k]();
+ const it=st.items,pg=it.filter(inprog),dn=it.filter(nd),dwk=Object.keys(st.w).filter(wd),k=st.tab;
+ $("#hs").innerHTML=`<div><b>${pg.length}</b>قيد الحفظ</div><div><b>${dn.length+dwk.length}</b>مستحقة اليوم</div><div><b>${it.filter(i=>i.stage==="stable"||i.stage==="wird").length}</b>مثبّتة</div>`;
+ const tabs=[["today","🏠","اليوم",dn.length+dwk.length],["mem","🧱","الحفظ",pg.length],["near","🔁","المراجعة",dn.length],["w","📅","الأسبوعي",dwk.length],["m","📘","المنهجية",0]];
+ $("#nav").innerHTML=tabs.map(t=>`<button class="${k===t[0]?"on":""}" onclick="go('${t[0]}')"><b>${t[1]}</b>${t[2]}${t[3]?`<em>${t[3]}</em>`:""}</button>`).join("");
+ $("#app").innerHTML=ban()+(["mem","near","w"].includes(k)?tbar(k):"")+{today:vToday,mem:vMem,near:vN,w:vW,m:vM,s:vS}[k]();
  $("#hd").textContent=fd(today());
  const s=$("#s");if(s)s.onchange=()=>{st.sel=+s.value;render()};
  const a=$("#a");if(a)a.onchange=fixTo;
 }
 render();remind();pushSync();
 </script>
-<script>if("serviceWorker" in navigator)addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));</script>
+<script>if("serviceWorker" in navigator&&(location.protocol==="https:"||location.hostname==="localhost"))addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));</script>
 </body>
 </html>
